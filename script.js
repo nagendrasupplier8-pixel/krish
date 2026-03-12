@@ -1,21 +1,55 @@
-function addTask(){
+// mobile menu
 
-const input = document.getElementById("taskInput");
+const menu = document.getElementById("menu");
+const nav = document.getElementById("nav");
 
-const task = input.value;
-
-if(task === "") return;
-
-const li = document.createElement("li");
-
-li.innerText = task;
-
-li.onclick = function(){
-li.style.textDecoration = "line-through";
+menu.onclick = () => {
+nav.classList.toggle("active");
 };
 
-document.getElementById("taskList").appendChild(li);
 
-input.value = "";
+// typing animation
+
+const text = "Web Developer • Designer • Creator";
+
+let i = 0;
+
+function typing(){
+
+if(i < text.length){
+
+document.getElementById("typing").innerHTML += text.charAt(i);
+
+i++;
+
+setTimeout(typing,60);
 
 }
+
+}
+
+typing();
+
+
+// scroll button
+
+function scrollContact(){
+
+document.getElementById("contact").scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+
+// contact form
+
+const form = document.getElementById("form");
+
+form.addEventListener("submit",function(e){
+
+e.preventDefault();
+
+alert("Message sent successfully!");
+
+});

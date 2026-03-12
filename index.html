@@ -1,27 +1,326 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
 
-<title>To Do App</title>
-<link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kabir Lamichhane</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+}
+
+body{
+background:#0f172a;
+color:white;
+}
+
+/* HEADER */
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 60px;
+background:#020617;
+position:sticky;
+top:0;
+}
+
+.logo{
+font-size:22px;
+font-weight:bold;
+}
+
+nav a{
+color:white;
+margin-left:20px;
+text-decoration:none;
+}
+
+.menu{
+display:none;
+font-size:28px;
+cursor:pointer;
+}
+
+/* HERO */
+
+.hero{
+height:90vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+background:linear-gradient(120deg,#3b82f6,#9333ea);
+}
+
+.hero h1{
+font-size:50px;
+}
+
+.hero p{
+margin-top:10px;
+font-size:20px;
+}
+
+.hero button{
+margin-top:20px;
+padding:12px 30px;
+border:none;
+border-radius:6px;
+background:white;
+color:black;
+cursor:pointer;
+}
+
+/* SECTIONS */
+
+section{
+padding:80px 40px;
+text-align:center;
+}
+
+.grid{
+display:flex;
+gap:30px;
+justify-content:center;
+flex-wrap:wrap;
+margin-top:40px;
+}
+
+.card{
+background:#1e293b;
+padding:30px;
+border-radius:10px;
+width:250px;
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+/* CONTACT */
+
+form{
+max-width:400px;
+margin:auto;
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+input,textarea{
+padding:12px;
+border:none;
+border-radius:6px;
+}
+
+button{
+cursor:pointer;
+}
+
+/* FOOTER */
+
+footer{
+padding:30px;
+background:#020617;
+text-align:center;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+nav{
+display:none;
+flex-direction:column;
+position:absolute;
+top:70px;
+right:20px;
+background:#020617;
+padding:20px;
+}
+
+nav.active{
+display:flex;
+}
+
+.menu{
+display:block;
+}
+
+}
+
+</style>
 
 </head>
 
 <body>
 
-<div class="container">
+<header>
 
-<h1>My Tasks</h1>
+<div class="logo">Kabir Lamichhane</div>
 
-<input id="taskInput" placeholder="Enter task">
+<nav id="nav">
 
-<button onclick="addTask()">Add</button>
+<a href="#">Home</a>
+<a href="#about">About</a>
+<a href="#services">Services</a>
+<a href="#portfolio">Portfolio</a>
+<a href="#contact">Contact</a>
 
-<ul id="taskList"></ul>
+</nav>
+
+<div class="menu" id="menu">☰</div>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<h1>Kabir Lamichhane</h1>
+
+<p id="typing"></p>
+
+<button onclick="scrollContact()">Hire Me</button>
+
+</section>
+
+<!-- ABOUT -->
+
+<section id="about">
+
+<h2>About Me</h2>
+
+<p>I build modern websites using HTML, CSS and JavaScript.</p>
+
+</section>
+
+<!-- SERVICES -->
+
+<section id="services">
+
+<h2>Services</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Web Design</h3>
+<p>Modern responsive website design.</p>
+</div>
+
+<div class="card">
+<h3>Web Development</h3>
+<p>Clean and fast code.</p>
+</div>
+
+<div class="card">
+<h3>SEO</h3>
+<p>Improve Google ranking.</p>
+</div>
 
 </div>
 
-<script src="script.js"></script>
+</section>
+
+<!-- PORTFOLIO -->
+
+<section id="portfolio">
+
+<h2>Projects</h2>
+
+<div class="grid">
+
+<div class="card">Portfolio Website</div>
+<div class="card">Landing Page Design</div>
+<div class="card">JavaScript App</div>
+
+</div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+<h2>Contact</h2>
+
+<form>
+
+<input type="text" placeholder="Name">
+
+<input type="email" placeholder="Email">
+
+<textarea placeholder="Message"></textarea>
+
+<button type="submit">Send</button>
+
+</form>
+
+</section>
+
+<footer>
+
+<p>© 2026 Kabir Lamichhane</p>
+
+</footer>
+
+<script>
+
+/* MOBILE MENU */
+
+const menu = document.getElementById("menu");
+const nav = document.getElementById("nav");
+
+menu.onclick = () => {
+nav.classList.toggle("active");
+};
+
+/* TYPING EFFECT */
+
+const text = "Web Developer • Designer • Creator";
+
+let i = 0;
+
+function typing(){
+
+if(i < text.length){
+
+document.getElementById("typing").innerHTML += text.charAt(i);
+
+i++;
+
+setTimeout(typing,60);
+
+}
+
+}
+
+typing();
+
+/* SCROLL */
+
+function scrollContact(){
+
+document.getElementById("contact").scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+</script>
 
 </body>
+
 </html>
